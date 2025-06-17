@@ -3,6 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Demo_Arrow : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class Demo_Arrow : MonoBehaviour
 
         Vector3 anchorLocalPos = transform.InverseTransformPoint(GridAnchor.position);
 
+        // Pick the forbidden direction ONCE for the whole grid
+        int randomAnswer = Random.Range(0, 4);
+
         for (int x = 0; x < (int)GridDimenstions.x; x++)
         {
             for (int y = 0; y < (int)GridDimenstions.y; y++)
@@ -33,9 +37,11 @@ public class Demo_Arrow : MonoBehaviour
                 GameObject square = Instantiate(GridSquare, transform);
                 square.SetActive(true);
                 square.transform.localPosition = anchorLocalPos + new Vector3(x * Spacing, -y * Spacing, 0);
+                square.transform.parent = ObjectForDestruction.transform;
+                Image im = square.GetComponent<Image>();
+                im.enabled = true;
 
-                // Pick direction logic
-                int randomAnswer = Random.Range(0, 4);
+                // Generate possible directions excluding forbidden one
                 List<int> possibleDirections = new List<int> { 0, 1, 2, 3 };
                 possibleDirections.Remove(randomAnswer);
                 int randomRotation = possibleDirections[Random.Range(0, possibleDirections.Count)];
@@ -45,6 +51,8 @@ public class Demo_Arrow : MonoBehaviour
                 arrow.SetActive(true);
                 arrow.transform.localPosition = Vector3.zero;
                 arrow.transform.localRotation = Quaternion.Euler(0, 0, randomRotation * 90f);
+                Image arrowIm = arrow.GetComponent<Image>();
+                arrowIm.enabled = true;
             }
         }
     }
