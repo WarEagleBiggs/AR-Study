@@ -21,7 +21,7 @@ public class Demo_Arrow : MonoBehaviour
     public float SquareFullness = 1.0f; 
     
     //stop watch
-    public Text StopWatchTxt;
+    public TextMeshProUGUI StopWatchTxt;
     public float StopWatchValue;
     public bool canTick;
 
