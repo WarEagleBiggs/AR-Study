@@ -3,6 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine.UI;
 
 public class Demo_Arrow : MonoBehaviour
@@ -17,7 +18,11 @@ public class Demo_Arrow : MonoBehaviour
     public Image Answer;
 
     [Range(0.0f, 1.0f)]
-    public float SquareFullness = 1.0f;  // % of squares that will get arrows
+    public float SquareFullness = 1.0f; 
+    
+    //stop watch
+    public Text StopWatchTxt;
+    public float StopWatchValue;
 
     void Start()
     {
@@ -78,7 +83,7 @@ public class Demo_Arrow : MonoBehaviour
                     Image arrowIm = arrow.GetComponent<Image>();
                     arrowIm.enabled = true;
                 }
-                // else: no arrow is placed (square remains empty)
+                // else no arrow is placed (square remains empty)
 
                 currentIndex++;
             }
@@ -90,6 +95,7 @@ public class Demo_Arrow : MonoBehaviour
         foreach (Transform child in ObjectForDestruction.transform)
         {
             Destroy(child.gameObject);
+            StopWatchValue = 0f;
         }
     }
 
@@ -103,10 +109,15 @@ public class Demo_Arrow : MonoBehaviour
         {
             RevealAnswer();
         }
+        
+        //updates stopwatch
+        StopWatchTxt.text = (StopWatchValue.ToString("f2"));
+        StopWatchValue = StopWatchValue + 1f * Time.deltaTime;
     }
 
     public void RevealAnswer()
     {
         Answer.color = Color.green;
     }
+
 }
