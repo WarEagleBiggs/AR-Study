@@ -1,4 +1,8 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class Demo_Arrow : MonoBehaviour
 {
@@ -29,18 +33,27 @@ public class Demo_Arrow : MonoBehaviour
                 //pick answer direction
                 int randomAnswer = Random.Range(0, 4);
 
+                // create list of all possible directions
+                List<int> possibleDirections = new List<int> { 0, 1, 2, 3 };
+                possibleDirections.Remove(randomAnswer);  // remove the one we're not allowed to use
+
+                // pick one of the remaining directions
+                int randomRotation = possibleDirections[Random.Range(0, possibleDirections.Count)];
+
                 //arrow
                 GameObject arrow = Instantiate(GridArrow, square.transform);
                 arrow.SetActive(true);
                 arrow.transform.localPosition = Vector3.zero;
-                float randomRotation = Random.Range(0, 4);
-                if (randomRotation == randomAnswer)
-                {
-                    randomRotation = Random.Range(0, 4);
-                }
-                randomRotation = randomRotation * 90f;
-                arrow.transform.localRotation = Quaternion.Euler(0, 0, randomRotation);
+                arrow.transform.localRotation = Quaternion.Euler(0, 0, randomRotation * 90f);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            GenerateGrid();
         }
     }
 }
