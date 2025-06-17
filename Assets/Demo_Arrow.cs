@@ -14,6 +14,10 @@ public class Demo_Arrow : MonoBehaviour
     public int Spacing = 40;
 
     public GameObject ObjectForDestruction;
+    public Image Answer;
+
+    [Range(0.0f, 1.0f)]
+    public float SquareFullness = 1.0f;  // % of squares that will get arrows
 
     void Start()
     {
@@ -26,8 +30,14 @@ public class Demo_Arrow : MonoBehaviour
 
         Vector3 anchorLocalPos = transform.InverseTransformPoint(GridAnchor.position);
 
-        // Pick the forbidden direction ONCE for the whole grid
+        // Pick forbidden direction 
         int randomAnswer = Random.Range(0, 4);
+
+        // Pick one random square that is allowed to use forbidden direction
+        int totalSquares = (int)GridDimenstions.x * (int)GridDimenstions.y;
+        int allowedIndex = Random.Range(0, totalSquares);
+
+        int currentIndex = 0;
 
         for (int x = 0; x < (int)GridDimenstions.x; x++)
         {
@@ -41,18 +51,36 @@ public class Demo_Arrow : MonoBehaviour
                 Image im = square.GetComponent<Image>();
                 im.enabled = true;
 
-                // Generate possible directions excluding forbidden one
-                List<int> possibleDirections = new List<int> { 0, 1, 2, 3 };
-                possibleDirections.Remove(randomAnswer);
-                int randomRotation = possibleDirections[Random.Range(0, possibleDirections.Count)];
+                // Decide whether to place an arrow here based on fullness
+                if (Random.value <= SquareFullness || currentIndex == allowedIndex)
+                {
+                    int randomRotation;
 
-                // Instantiate arrow
-                GameObject arrow = Instantiate(GridArrow, square.transform);
-                arrow.SetActive(true);
-                arrow.transform.localPosition = Vector3.zero;
-                arrow.transform.localRotation = Quaternion.Euler(0, 0, randomRotation * 90f);
-                Image arrowIm = arrow.GetComponent<Image>();
-                arrowIm.enabled = true;
+                    if (currentIndex == allowedIndex)
+                    {
+                        // This is the lucky square that gets the forbidden direction
+                        randomRotation = randomAnswer;
+                        Answer = square.GetComponent<Image>();
+                    }
+                    else
+                    {
+                        // Exclude forbidden direction for all other squares
+                        List<int> possibleDirections = new List<int> { 0, 1, 2, 3 };
+                        possibleDirections.Remove(randomAnswer);
+                        randomRotation = possibleDirections[Random.Range(0, possibleDirections.Count)];
+                    }
+
+                    // Instantiate arrow
+                    GameObject arrow = Instantiate(GridArrow, square.transform);
+                    arrow.SetActive(true);
+                    arrow.transform.localPosition = Vector3.zero;
+                    arrow.transform.localRotation = Quaternion.Euler(0, 0, randomRotation * 90f);
+                    Image arrowIm = arrow.GetComponent<Image>();
+                    arrowIm.enabled = true;
+                }
+                // else: no arrow is placed (square remains empty)
+
+                currentIndex++;
             }
         }
     }
@@ -71,5 +99,14 @@ public class Demo_Arrow : MonoBehaviour
         {
             GenerateGrid();
         }
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            RevealAnswer();
+        }
+    }
+
+    public void RevealAnswer()
+    {
+        Answer.color = Color.green;
     }
 }

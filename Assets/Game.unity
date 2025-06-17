@@ -1167,6 +1167,8 @@ MonoBehaviour:
   GridArrow: {fileID: 1951545280}
   Spacing: 40
   ObjectForDestruction: {fileID: 1250001964}
+  Answer: {fileID: 0}
+  SquareFullness: 0.598
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
