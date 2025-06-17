@@ -23,6 +23,7 @@ public class Demo_Arrow : MonoBehaviour
     //stop watch
     public Text StopWatchTxt;
     public float StopWatchValue;
+    public bool canTick;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class Demo_Arrow : MonoBehaviour
     public void GenerateGrid()
     {
         ClearGrid();
+        canTick = true;
 
         Vector3 anchorLocalPos = transform.InverseTransformPoint(GridAnchor.position);
 
@@ -111,13 +113,17 @@ public class Demo_Arrow : MonoBehaviour
         }
         
         //updates stopwatch
-        StopWatchTxt.text = (StopWatchValue.ToString("f2"));
-        StopWatchValue = StopWatchValue + 1f * Time.deltaTime;
+        if (canTick)
+        {
+            StopWatchTxt.text = (StopWatchValue.ToString("f2"));
+            StopWatchValue = StopWatchValue + 1f * Time.deltaTime;
+        }
     }
 
     public void RevealAnswer()
     {
         Answer.color = Color.green;
+        canTick = false;
     }
 
 }
