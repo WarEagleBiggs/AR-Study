@@ -25,6 +25,9 @@ public class Demo_Arrow : MonoBehaviour
     public float StopWatchValue;
     public bool canTick;
 
+    public InputActionReference ResetBtn;
+    public InputActionReference RevealBtn;
+
     void Start()
     {
         GenerateGrid();
@@ -124,6 +127,24 @@ public class Demo_Arrow : MonoBehaviour
     {
         Answer.color = Color.green;
         canTick = false;
+    }
+    
+    //Buttons on phone
+    private void OnEnable()
+    {
+        ResetBtn.action.performed += OnButtonPressed;
+        ResetBtn.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        ResetBtn.action.performed -= OnButtonPressed;
+        ResetBtn.action.Disable();
+    }
+
+    private void OnButtonPressed(InputAction.CallbackContext context)
+    {
+        GenerateGrid();
     }
 
 }

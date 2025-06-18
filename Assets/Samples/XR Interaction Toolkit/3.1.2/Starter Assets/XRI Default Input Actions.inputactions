@@ -3397,6 +3397,62 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "AR-Reset",
+            "id": "8ae1bd1c-c61a-43fa-99a7-4b4eca9c5e32",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "ff340ef0-20e3-425b-8e01-5797018e4b12",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "86bb41b4-e5dc-4507-8ce0-56e0f2df3b14",
+                    "path": "<XREALController>/ButtonId0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "AR-Reveal",
+            "id": "4607956c-5d2a-435c-a4b6-f92ac04a6944",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "65a40579-7024-4533-be31-0da31289724d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b827eb6d-ddfe-4306-a9f7-fcbfd33cd7d1",
+                    "path": "<XREALController>/ButtonId1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
