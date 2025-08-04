@@ -563,9 +563,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385fe2c48f1a5ff418f73f31a93c0c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordCount: 10
+  wordCount: 5
   generatedText: 
   outputTxt: {fileID: 1664513630}
+  stopWatchTxt: {fileID: 1569934394}
+  stopWatchValue: 0
+  canTick: 0
+  resetBtn: {fileID: 0}
+  revealBtn: {fileID: 0}
+  backgroundImage: {fileID: 0}
 --- !u!1 &659724294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,8 +1429,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a56008554102084a80d8e45e54b8172, type: 2}
+  m_sharedMaterial: {fileID: 8871898788744086812, guid: 3a56008554102084a80d8e45e54b8172, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
