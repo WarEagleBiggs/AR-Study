@@ -26,6 +26,11 @@ public class Demo_Text : MonoBehaviour
 
     [Header("Visual Effects")]
     public Image backgroundImage;
+    
+    
+    //control panel
+    public TMP_InputField inputField;
+    
 
     void Start()
     {
@@ -35,6 +40,11 @@ public class Demo_Text : MonoBehaviour
 
     void Update()
     {
+        //control panel updates
+        wordCount = int.Parse(inputField.text);
+
+        
+        
         // Keyboard fallback (optional)
         if (Keyboard.current.rKey.wasPressedThisFrame)
             GenerateText();
@@ -52,7 +62,7 @@ public class Demo_Text : MonoBehaviour
         outputTxt.SetText(generatedText);
     }
 
-    private void GenerateText()
+    public void GenerateText()
     {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < wordCount; i++)
