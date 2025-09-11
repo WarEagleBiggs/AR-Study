@@ -493,7 +493,7 @@ GameObject:
   m_Icon: {fileID: 2800000, guid: 0e80bd0b4a8196f46acf73711b9505ec, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &530244384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,12 +986,11 @@ GameObject:
   m_Component:
   - component: {fileID: 824619576}
   - component: {fileID: 824619575}
-  - component: {fileID: 824619574}
   - component: {fileID: 824619573}
   m_Layer: 0
   m_Name: ControlCam
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 281160d54742cbb44a88a61bf8ccfb16, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1039,14 +1038,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &824619574
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824619572}
-  m_Enabled: 1
 --- !u!20 &824619575
 Camera:
   m_ObjectHideFlags: 0
@@ -1128,7 +1119,7 @@ GameObject:
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 47bc1b2cbf952554fb58fdc7e08d35d7, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3068,7 +3059,7 @@ GameObject:
   m_Icon: {fileID: 2800000, guid: 0e80bd0b4a8196f46acf73711b9505ec, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1701953150737600
 GameObject:
   m_ObjectHideFlags: 0
